@@ -31,19 +31,22 @@ public class PlayerController : MonoBehaviour
 		motor.Move(_velocity);
 
         //Calculate rotation as a 3D vector (turning around)
-        float _yRot = Input.GetAxisRaw("Mouse X");
+        if (Input.GetButton("Fire2"))
+        {
+            float _yRot = Input.GetAxisRaw("Mouse X");
 
-        Vector3 _rotation = new Vector3(0f, _yRot, 0f) * lookSencetivity;
+            Vector3 _rotation = new Vector3(0f, _yRot, 0f) * lookSencetivity;
 
-        //Apply rotation
-        motor.Rotate(_rotation);
+            //Apply rotation
+            motor.Rotate(_rotation);
 
-        //Calculate camera rotation as a 3D vector (turning around)
-        float _xRot = Input.GetAxisRaw("Mouse Y");
+            //Calculate camera rotation as a 3D vector (turning around)
+            float _xRot = Input.GetAxisRaw("Mouse Y");
 
-        Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * lookSencetivity;
+            Vector3 _cameraRotation = new Vector3(_xRot, 0f, 0f) * lookSencetivity;
 
-        //Apply camera rotation
-        motor.RotateCamera(_cameraRotation);
+            //Apply camera rotation
+            motor.RotateCamera(_cameraRotation);
+        }
     }
 }
